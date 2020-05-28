@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { addNewFeature } from '../actions/'
 
 const Header = props => {
   return (
@@ -12,4 +14,16 @@ const Header = props => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  console.log("maps to props", state)
+  return {
+    features: state.car
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addNewFeature }
+
+)(Header);
+//Function currying - look that up
